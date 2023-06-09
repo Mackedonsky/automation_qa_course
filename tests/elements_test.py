@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage
 
 
 class TestElements:
@@ -90,3 +90,14 @@ class TestElements:
             assert count == [5, 10, 20, 25, 50, 100], "The number of rows in the table has not been changed/changed " \
                                                       "incorrectly"
 
+    class TestButtonPage:
+
+        def test_different_click_on_the_buttons(self, driver):
+            button_page = ButtonPage(driver, 'https://demoqa.com/buttons')
+            button_page.open()
+            double = button_page.click_on_different_buttons('double')
+            right = button_page.click_on_different_buttons('right')
+            click = button_page.click_on_different_buttons('click')
+            assert double == "You have done a double click", "Double click button was not pressed"
+            assert right == "You have done a right click", "Right click button was not pressed"
+            assert click == "You have done a dynamic click", "Dynamic click button was not pressed"
