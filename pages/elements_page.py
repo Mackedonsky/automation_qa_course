@@ -144,6 +144,8 @@ class WebTablePage(BasePage):
         return self.element_is_present(self.locators.NO_ROWS_FOUND).text
 
     def select_up_to_some_rows(self):
+        self.remove_footer()
+        self.remove_ads()
         count = [5, 10, 20, 25, 50, 100]
         data = []
         for x in count:
@@ -152,6 +154,7 @@ class WebTablePage(BasePage):
             count_row_button.click()
             self.element_is_visible((By.CSS_SELECTOR, f'option[value="{x}"]')).click()
             data.append(self.check_count_rows())
+        return data
 
     def check_count_rows(self):
         list_rows = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
@@ -225,7 +228,6 @@ class UploadAndDownloadPage(BasePage):
 class DynamicPropertiesPage(BasePage):
     locators = DynamicPropertiesPageLocators()
 
-
     def check_enable_button(self):
         try:
             self.element_is_clickable(self.locators.ENABLE_BUTTON)
@@ -246,4 +248,3 @@ class DynamicPropertiesPage(BasePage):
         except TimeoutException:
             return False
         return True
-

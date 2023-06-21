@@ -1,6 +1,9 @@
+from selenium.common import NoSuchElementException
 from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
+
 
 class BasePage:
     def __init__(self, driver, url):
@@ -40,4 +43,18 @@ class BasePage:
         action = ActionChains(self.driver)
         action.context_click(element)
         action.perform()
+
+    def remove_ads(self):
+        try:
+            ad_above = self.element_is_present((By.CSS_SELECTOR, "div[id='Ad.Plus-728x90']"))
+            self.driver.execute_script("arguments[0].remove()", ad_above)
+        except NoSuchElementException:
+            pass
+        ad_ban = self.element_is_present((By.CSS_SELECTOR, "div[id='fixedban']"))
+        self.driver.execute_script("arguments[0].remove()", ad_ban)
+        ad_section = self.element_is_present((By.CSS_SELECTOR, "div[class='Advertisement-Section']"))
+        self.driver.execute_script("arguments[0].remove()", ad_section)
+
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
 
