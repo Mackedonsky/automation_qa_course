@@ -58,3 +58,7 @@ class BasePage:
     def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
 
+    def action_new_tab(self, element):
+        action = ActionChains(self.driver)
+        action.click(element)
+        action.perform()
