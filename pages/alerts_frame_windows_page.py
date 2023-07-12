@@ -2,7 +2,7 @@ import random
 import time
 
 from locators.alerts_frame_windows_locators import BrowserWindowsPageLocators, AlertsPageLocators, \
-    FramesPageLocators
+    FramesPageLocators, NestedFramesPageLocators
 from pages.base_page import BasePage
 
 
@@ -44,7 +44,7 @@ class AlertsPage(BasePage):
         return text_result
 
     def check_prompt_alert(self):
-        text = f"autotest{random.randint(0,999)}"
+        text = f"autotest{random.randint(0, 999)}"
         self.element_is_visible(self.locators.PROMPT_BOX_ALERT_BUTTON).click()
         alert_window = self.driver.switch_to.alert
         alert_window.send_keys(text)
@@ -74,3 +74,15 @@ class FramesPage(BasePage):
             self.driver.switch_to.default_content()
             return [text, width, height]
 
+
+class NestedFramesPage(BasePage):
+    locators = NestedFramesPageLocators()
+
+    def check_nested_frames(self):
+        parent_frame = self.element_is_present(self.locators.PARENT_FRAME)
+        self.driver.switch_to.frame(parent_frame)
+        parent_text = self.element_is_present(self.locators.PARENT_TEXT).text
+        child_frame = self.element_is_present(self.locators.CHILD_FRAME)
+        self.driver.switch_to.frame(child_frame)
+        child_text = self.element_is_present(self.locators.CHILD_TEXT).text
+        return parent_text, child_text
