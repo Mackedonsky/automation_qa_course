@@ -54,8 +54,6 @@ class BasePage:
         self.driver.execute_script("arguments[0].remove()", ad_ban)
         ad_section = self.element_is_present((By.CSS_SELECTOR, "div[class='Advertisement-Section']"))
         self.driver.execute_script("arguments[0].remove()", ad_section)
-
-    def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
 
     def action_new_tab(self, element):
