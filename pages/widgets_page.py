@@ -69,3 +69,7 @@ class AutoCompletePage(BasePage):
     def check_color_in_single(self):
         color = self.element_is_visible(self.locators.SINGLE_CONTAINER)
         return color.text
+
+
+
+

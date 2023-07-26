@@ -42,3 +42,5 @@ class TestWidgets:
             color = autocomplete_page.fill_input_single()
             color_result = autocomplete_page.check_color_in_single()
             assert color == color_result, 'Added color is missing in input'
+
+
