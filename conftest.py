@@ -9,7 +9,7 @@ def driver():
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = chrome_binary_path
-    driver = webdriver.Chrome(ChromeDriverManager(driver_version='115.0.5790.102').install(),
+    driver = webdriver.Chrome(ChromeDriverManager(driver_version='118.0.5993.70').install(),
                               chrome_options=chrome_options)
     driver.maximize_window()
     yield driver

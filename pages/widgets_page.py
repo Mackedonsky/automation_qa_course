@@ -7,7 +7,8 @@ from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date
 from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators, \
+    SelectMenuPageLocators
 from pages.base_page import BasePage
 
 
@@ -197,3 +198,13 @@ class MenuPage(BasePage):
             self.action_move_to_element(item)
             data.append(item.text)
         return data
+
+
+# class SelectMenuPage(BasePage):
+#     locators = SelectMenuPageLocators()
+#
+#     def select_value(self):
+#         self.element_is_visible(self.locators.SELECT_VALUE_BUTTON).click()
+#         self.element_is_visible(self.locators.INPUT_VALUE_BUTTON).send_keys(Keys.RETURN)
+#         result = self.element_is_visible(self.locators.SELECT_VALUE_BUTTON).text
+#         return result
