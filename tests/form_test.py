@@ -10,9 +10,9 @@ class TestForm:
             form_page = FormPage(driver, 'https://demoqa.com/automation-practice-form')
             form_page.open()
             form_page.remove_ads()
-            form_page.remove_footer()
             p = form_page.fill_form_fields()
             result = form_page.form_result()
+            time.sleep(5)
             print(p.first_name, p.last_name, p.email, p.mobile)
             print(result[0], result[1], result[3])
             assert [p.first_name + " " + p.last_name, p.email, p.mobile] == [result[0], result[1], result[3]], \

@@ -1,7 +1,7 @@
 import time
 
 from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
-    ToolTipsPage, MenuPage
+    ToolTipsPage, MenuPage, SelectMenuPage
 
 
 class TestWidgets:
@@ -117,3 +117,14 @@ class TestMenuPage:
         data = menu_page.check_menu()
         assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1',
                         'Sub Sub Item 2', 'Main Item 3'], 'Menu item have not been selected'
+
+
+# class TestSelectMenuPage:
+#
+#     def test_select_menu(self, driver):
+#         select_menu = SelectMenuPage(driver, 'https://demoqa.com/select-menu')
+#         select_menu.open()
+#         select_menu.remove_ads()
+#         result = select_menu.select_value()
+#         time.sleep(2)
+#         print(result)

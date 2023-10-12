@@ -18,6 +18,8 @@ class AutoCompletePageLocators:
     SINGLE_INPUT = (By.CSS_SELECTOR, 'input[id="autoCompleteSingleInput"]')
 
 
+
+
 class DatePickerPageLocators:
     DATE_INPUT = (By.CSS_SELECTOR, 'input[id = "datePickerMonthYearInput"]')
     DATE_SELECT_MONTH = (By.CSS_SELECTOR, 'select[class = "react-datepicker__month-select"]')
@@ -72,4 +74,18 @@ class ToolTipsPageLocators:
 
 class MenuPageLocators:
     MENU_ITEM_LIST = (By.CSS_SELECTOR, 'ul[id="nav"] li a')
+
+
+# class SelectMenuPageLocators:
+#     SELECT_VALUE_BUTTON = (By.CSS_SELECTOR, 'div[id = "withOptGroup"]')
+#     INPUT_VALUE_BUTTON = (By.XPATH, "(//input[starts-with(@id, 'react-select')])[1]")
+#     ALL_VALUES = (By.XPATH, "//div[starts-with(@id, 'react-select-2-option')]")
+#
+#     SELECT_ONE_BUTTON = (By.CSS_SELECTOR, 'div[id = "selectOne"]')
+#     INPUT_ONE_BUTTON = (By.CSS_SELECTOR, 'input[id = "react-select-6-input"]')
+#     SELECT_OLD_BUTTON = (By.CSS_SELECTOR, 'select[id = "oldSelectMenu"]')
+#     MULTI_INPUT_BUTTON = (By.CSS_SELECTOR, 'input[id = "react-select-23-input"]')
+#     MULTI_INPUT_VALUE = (By.CSS_SELECTOR, 'div[class ="css-1rhbuit-multiValue"]')
+#     STANDARD_MULTI_BUTTON = (By.CSS_SELECTOR, 'select[id = "cars"]')
+
 
