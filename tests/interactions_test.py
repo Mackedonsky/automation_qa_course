@@ -1,6 +1,6 @@
 import time
 
-from pages.interactions_page import SortablePage, SelectablePage
+from pages.interactions_page import SortablePage, SelectablePage, ResizablePage
 
 
 class TestInteractions:
@@ -26,3 +26,14 @@ class TestInteractions:
             assert len(item_list) > 0, "Elements were not selected"
             assert len(item_grid) > 0, "Elements were not selected"
 
+    class TestResizablePage:
+        def test_resizable(self, driver):
+            resizable_page = ResizablePage(driver, 'https://demoqa.com/resizable')
+            resizable_page.open()
+            resizable_page.remove_ads()
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # scroll down
+            max_resize, min_resize = resizable_page.change_size_resizable()
+            max_box, min_box = resizable_page.change_size_resizable_box()
+            assert ('500px', '300px') == max_box, 'maximum size is not equal to 500*300'
+            assert ('150px', '150px') == min_box, 'minimum size is not equal to 150*150'
+            assert max_resize != min_resize, 'size has not been changed'
